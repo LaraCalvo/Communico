@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- Boostrap theme -->
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container p-5" id="home-page">
+        <div class="jumbotron bg-info">
+            <h1 class="display-3">Communico</h1>
+            <p class="lead">Send a comforting message to a student in need</p>
+            <hr class="my-4">
+            <p>Create and account and start</p>
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="#" role="button" id="start-button">Create an account/Login</a>
+            </p>
+          </div>
+
+    </div>
+
+    <!-- Login/ Sign up form -->
+    <div class="container" style="display:none;" id="registration-page">
+    <div class="row">
+    <!-- Login form -->
+    <div class="container col-md-6 p-5" >
+        <form id="login-form">
+            <legend>Login</legend>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="login-email"
+               aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="login-password" 
+              placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary" id='login-btn'>Login</button>
+        </form>
+    </div>
+    <!-- Sign up form -->
+    <div class="container col-md-6 p-5">
+        <form id="sign-up-form">
+            <legend>Sign up</legend>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Name</label>
+              <input type="text" class="form-control" placeholder="Name" id="signup-name">
+              <small id="emailHelp" class="form-text text-muted">
+                  We will only share your name with the receiver</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="signup-email"
+               aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">
+                  We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="signup-password" 
+              placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary" id="signup-btn">Sign up</button>
+        </form>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- User page to send emails to people you want -->
+    <div class="container p-5" id="main-page" style="display:none;">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Communico</a>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <button class="btn btn-warning my-2 my-sm-0" type="submit" id="logout-btn">Log out</button>
+            </div>
+          </nav>
+
+        <div class="row">
+            <div class='col-md-6 p-5'>
+                <form id="send-message-form">
+                    <div class="form-group">
+                        <label for="exampleTextarea">Write your message here!</label>
+                        <textarea class="form-control" id="message-text-area" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Send</button>
+                </form>
+            </div>
+            <div class="col-md-6 p-5" id="receive-message">
+                <div class="form-group">
+                    <label for="exampleTextarea">Here are your received messages!</label>
+                    <textarea class="form-control" id="get-message-text-area" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success" id="get-message-btn">Receive here!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast show mx-auto bg-success" role="alert" aria-live="assertive" aria-atomic="true" style="display:none;" id='success-message-toast'>
+        <div class="toast-header">
+          <strong class="mr-auto">Congrats!</strong>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" id="close-toast-btn">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">
+          Your message was delivered with success!
+        </div>
+      </div>
+    
+
+    <!-- CUSTOM CODE-->
+    <script src="\scripts\index.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBsB9ZJ0PzS5JKGOkTrgbkMeLkCY5uPLqs",
+        authDomain: "communico-f62dc.firebaseapp.com",
+        projectId: "communico-f62dc",
+        storageBucket: "communico-f62dc.appspot.com",
+        messagingSenderId: "667568254316",
+        appId: "1:667568254316:web:2c3d69db8dab63cda29749"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth_firebase = firebase.auth();
+    const fs = firebase.firestore();
+    </script>
+    
+
+</body>
+</html>
